@@ -10,5 +10,7 @@ namespace eShopAEXM.Data.Entities
     {
         public Guid ID { get; set; }
         public string Name { get; set; }
+
+        public virtual ICollection<ProductVariants> ProductVariants { get; set; }
     }
 }

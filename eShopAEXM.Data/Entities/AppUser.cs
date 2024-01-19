@@ -12,5 +12,8 @@ namespace eShopAEXM.Data.Entities
         public string Fullname { get; set; }
         public string Address { get; set; }
 
+        
+        public virtual ICollection<CartItem> CartItems { get; set; }
+        public virtual ICollection<Invoices> Invoices { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,5 +13,7 @@ namespace eShopAEXM.Data.Entities
         public Guid InvoiceItemID { get; set; }
         public int Rate { get; set; } //De kieu du lieu int co hop ly khg ?
         public string Comment { get; set; }
+        [ForeignKey("InvoiceItemID")]
+        public virtual ICollection<InvoiceItems> InvoiceItems { get; set; }
     }
 }

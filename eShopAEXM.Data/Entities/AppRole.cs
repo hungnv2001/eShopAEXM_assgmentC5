@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace eShopAEXM.Data.Entities
 {
-    public class User : IdentityUser<Guid>
+    public class AppRole : IdentityRole<Guid>
     {
-        public string Fullname { get; set; }
-        public string Address { get; set; }
 
     }
 }

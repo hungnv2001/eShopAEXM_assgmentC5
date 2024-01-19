@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using eShopAEXM.Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace eShopAEXM.Data.Context
 {
-    public class eShopAEXMContext : IdentityDbContext
+    public class eShopAEXMContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
-        public eShopAEXMContext(DbContextOptions options) : base(options)
+        public eShopAEXMContext(DbContextOptions<eShopAEXMContext> options) : base(options)
         {
         }
 

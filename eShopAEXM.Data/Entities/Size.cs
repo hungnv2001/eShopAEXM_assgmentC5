@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace eShopAEXM.Data.Entities
 {
-    public class Role : IdentityRole<Guid>
+    public class Size
     {
-
+        public Guid ID { get; set; }
+        public string Name { get; set; }
     }
 }

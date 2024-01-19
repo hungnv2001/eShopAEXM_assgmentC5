@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -7,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace eShopAEXM.Data.Entities
 {
+    [Table("CartItem")]   
     public class CartItem
     {
+        [Key]   
         public Guid ID { get; set; }
         public Guid CustomerID { get; set; }
+        [Required(ErrorMessage ="Vui lòng nhập số lượng")]
+        [Range(0,int.MaxValue)]
         public int Quantity { get; set; }
         public Guid ProductVariantID { get; set; }
 

@@ -10,6 +10,6 @@ namespace eShopAEXM.Data.Entities
     {
         public Guid ID { get; set; }
         public string URL { get; set; }
-        public int Order { get; set; } // Doan nay nen de string hay int ?
+        public int Order { get; set; } //Thu tu sap xep
     }
 }

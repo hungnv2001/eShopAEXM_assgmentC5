@@ -10,15 +10,20 @@ using System.Threading.Tasks;
 
 namespace eShopAEXM.Data.Entities
 {
+    [Table("Products")]
     public class Products
     {
+        [Key]
         public Guid Id { get; set; }
+        [Required(ErrorMessage ="vui lòng nhập tên sản phẩm")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "vui lòng nhập mô tả sản phẩm")]
         public string Description { get; set; }
-        [Required]
+        [Required(ErrorMessage = "vui lòng nhập giá  sản phẩm")]
         public double Price { get; set; }
         public Guid BrandID { get; set; }
         public Guid CateID { get; set; }
+        [Required(ErrorMessage = "vui lòng nhập trạng thái sản phẩm")]
         public Status Status { get; set; }
 
         public virtual ICollection<ProductVariants> ProductVariants { get; set; }

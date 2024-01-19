@@ -11,6 +11,7 @@ namespace eShopAEXM.Data.Entities
     {
         [Key]
         public Guid Id { get; set; }
+        [Required(ErrorMessage ="Phải nhập địa chỉ ship hàng")]
         public string ShippingAddress { get; set; }
         public double TotalPrice { get; set; }
         public Guid CustomerID {  get; set; }

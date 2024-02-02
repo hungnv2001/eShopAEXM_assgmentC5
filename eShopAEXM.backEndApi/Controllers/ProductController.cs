@@ -14,7 +14,7 @@ namespace eShopAEXM.backEndApi.Controllers
         {
             _productRepo = productRepo;
         }
-        [HttpPost]
+        [HttpPost("getlstProductWithPading")]
         public async Task<ActionResult> GetProductWithPaging(GetProductWithPagingRequest request)
         {
             var products = await _productRepo.GetProductsWithPagingnation(request);

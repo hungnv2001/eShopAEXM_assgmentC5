@@ -102,11 +102,15 @@ namespace eShopAEXM.Application.Repository
             return productDTO;
         }
 
-        public async Task<List<ProductDTO>> GetProductsWithPagingnation(GetProductWithPagingRequest request)
+        public async Task<ProductShopListPaging> GetProductsWithPagingnation(GetProductWithPagingRequest request)
         {
-            var lstProduct = await _eShopAEXMContext.Products.Include(p => p.Brands).Include(p => p.Category).Include(p=>p.ProductsIMGs)
-                .Where(x=>x.Status==Status.Active).OrderBy(p=>p.Id).Skip((request.PageIndex-1)*request.PageSize)
-                .Take(request.PageSize).ToListAsync();
+            var lstProduct = await _eShopAEXMContext.Products.Include(p => p.Brands).Include(p => p.Category).Include(p=>p.ProductsIMGs).Include(p=>p.ProductVariants)
+                .Where(p => p.ProductVariants.Any(p => p.Quantity > 0 && p.Status == Status.Active)&&p.Status==Status.Active).OrderBy(p => p.Id).ToListAsync();
+
+            var pages = (int)Math.Ceiling(lstProduct.Count() / (double)request.PageSize);
+
+            lstProduct = lstProduct.Skip((request.PageIndex - 1) * request.PageSize).Take(request.PageSize).ToList();
+            
             var lstProductDTO = lstProduct.Select(x => new ProductDTO()
             {
                 Id = x.Id,
@@ -119,8 +123,15 @@ namespace eShopAEXM.Application.Repository
                 Price = x.Price,
                 Status = x.Status,
                 UrlIMG = x.ProductsIMGs.Count>0 ? x.ProductsIMGs.OrderBy(x => x.Order == 1).First().URL : "chưa có ảnh"
-            }); ; 
-            return  lstProductDTO.ToList();
+            }); ;
+          
+            return  new ProductShopListPaging()
+            { 
+                PageIndex = request.PageIndex,
+                PageSize = lstProductDTO.Count(),
+                Data  =lstProductDTO.ToList(),
+                TotalPage= pages,
+            };
                 
 
         }

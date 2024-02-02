@@ -11,6 +11,6 @@ namespace eShopAEXM.Application.IRepository
     {
         Task<ProductDTO> CreateProduct(CreateProductRequest request);
         Task<ProductDTO> GetProductByID(Guid id);
-        Task<List<ProductDTO>> GetProductsWithPagingnation(GetProductWithPagingRequest request);
+		Task<ProductShopListPaging> GetProductsWithPagingnation(GetProductWithPagingRequest request);
     }
 }

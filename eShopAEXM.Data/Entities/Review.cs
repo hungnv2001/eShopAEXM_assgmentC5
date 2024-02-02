@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eShopAEXM.backEndApi.Entities
 {
-    [Table("Review")]   
+    [Table("Review")]
     public class Review
     {
-        [Key]   
+        [Key]
         public Guid ID { get; set; }
         public Guid? InvoiceItemID { get; set; }
-        [Required(ErrorMessage ="Vui lòng nhập giá")]
+        [Required(ErrorMessage = "Vui lòng nhập giá")]
         public int Rate { get; set; } //De kieu du lieu int co hop ly khg ?
         [Required(ErrorMessage = "Vui lòng nhập bình luận")]
         public string? Comment { get; set; }

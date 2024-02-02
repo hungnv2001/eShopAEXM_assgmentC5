@@ -1,15 +1,9 @@
 ﻿using eShopAEXM.Application.IRepository;
 using eShopAEXM.backEndApi.Entities;
 using eShopAEXM.Data.Context;
-using eShopAEXM.Data.Models;
 using eShopAEXM.ModelView.Enum;
 using eShopAEXM.ModelView.ProductVM;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eShopAEXM.Application.Repository
 {
@@ -78,7 +72,7 @@ namespace eShopAEXM.Application.Repository
             var productDTO = new ProductDTO();
             if (product != null)
             {
-               productDTO = new ProductDTO()
+                productDTO = new ProductDTO()
                 {
                     Id = product.Id,
                     Name = product.Name,
@@ -98,14 +92,14 @@ namespace eShopAEXM.Application.Repository
                 var proCategory = await _eShopAEXMContext.Categories.FirstAsync(x => x.Id == product.CateID);
                 productDTO.CateName = proCategory.Name;
             }
-           
+
             return productDTO;
         }
 
         public async Task<List<ProductDTO>> GetProductsWithPagingnation(GetProductWithPagingRequest request)
         {
-            var lstProduct = await _eShopAEXMContext.Products.Include(p => p.Brands).Include(p => p.Category).Include(p=>p.ProductsIMGs)
-                .Where(x=>x.Status==Status.Active).OrderBy(p=>p.Id).Skip((request.PageIndex-1)*request.PageSize)
+            var lstProduct = await _eShopAEXMContext.Products.Include(p => p.Brands).Include(p => p.Category).Include(p => p.ProductsIMGs)
+                .Where(x => x.Status == Status.Active).OrderBy(p => p.Id).Skip((request.PageIndex - 1) * request.PageSize)
                 .Take(request.PageSize).ToListAsync();
             var lstProductDTO = lstProduct.Select(x => new ProductDTO()
             {
@@ -118,10 +112,10 @@ namespace eShopAEXM.Application.Repository
                 Description = x.Description,
                 Price = x.Price,
                 Status = x.Status,
-                UrlIMG = x.ProductsIMGs.Count>0 ? x.ProductsIMGs.OrderBy(x => x.Order == 1).First().URL : "chưa có ảnh"
-            }); ; 
-            return  lstProductDTO.ToList();
-                
+                UrlIMG = x.ProductsIMGs.Count > 0 ? x.ProductsIMGs.OrderBy(x => x.Order == 1).First().URL : "chưa có ảnh"
+            }); ;
+            return lstProductDTO.ToList();
+
 
         }
     }

@@ -1,8 +1,6 @@
 ﻿using eShopAEXM.Application.IRepository;
 using eShopAEXM.ModelView.ProductVM;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
 
 namespace eShopAEXM.backEndApi.Controllers
 {
@@ -21,7 +19,7 @@ namespace eShopAEXM.backEndApi.Controllers
         {
             var products = await _productRepo.GetProductsWithPagingnation(request);
             return Ok(products);
-        } 
-        
+        }
+
     }
 }

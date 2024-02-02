@@ -1,5 +1,4 @@
-﻿using eShopAEXM.backEndApi.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace eShopAEXM.Data.Context

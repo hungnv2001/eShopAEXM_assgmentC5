@@ -1,12 +1,6 @@
 ﻿using eShopAEXM.ModelView.Enum;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eShopAEXM.backEndApi.Entities
 {
@@ -15,7 +9,7 @@ namespace eShopAEXM.backEndApi.Entities
     {
         [Key]
         public Guid Id { get; set; }
-        [Required(ErrorMessage ="vui lòng nhập tên sản phẩm")]
+        [Required(ErrorMessage = "vui lòng nhập tên sản phẩm")]
         public string Name { get; set; }
         [Required(ErrorMessage = "vui lòng nhập mô tả sản phẩm")]
         public string Description { get; set; }

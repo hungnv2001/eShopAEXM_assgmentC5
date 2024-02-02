@@ -16,10 +16,12 @@ namespace eShopAEXM.backEndApi.Controllers
         {
             _productRepo = productRepo;
         }
-        [HttpGet]
-        public Task<List<ProductDTO>> GetProductWithPaging(GetProductWithPagingRequest request)
+        [HttpPost]
+        public async Task<ActionResult> GetProductWithPaging(GetProductWithPagingRequest request)
         {
-            return _productRepo.GetProductsWithPagingnation(request);
-        }
+            var products = await _productRepo.GetProductsWithPagingnation(request);
+            return Ok(products);
+        } 
+        
     }
 }

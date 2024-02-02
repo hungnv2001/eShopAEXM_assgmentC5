@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShopAEXM.Data.Entities
+namespace eShopAEXM.backEndApi.Entities
 {
     [Table("Color")]   
     public class Color
@@ -15,7 +15,7 @@ namespace eShopAEXM.Data.Entities
         public Guid ID { get; set; }
         [Required(ErrorMessage ="Vui lòng nhập tên màu")]
         public string Name { get; set; }
-        public virtual ICollection<ProductVariants> ProductVariants { get; set; }
+        public virtual ICollection<ProductVariants>? ProductVariants { get; set; }
 
     }
 }

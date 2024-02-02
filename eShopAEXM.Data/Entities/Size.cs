@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShopAEXM.Data.Entities
+namespace eShopAEXM.backEndApi.Entities
 {
     [Table("Size")]
     public class Size
@@ -16,6 +16,6 @@ namespace eShopAEXM.Data.Entities
         [Required(ErrorMessage ="Vui lòng nhập tên size")]
         public string Name { get; set; }
 
-        public virtual ICollection<ProductVariants> ProductVariants { get; set; }
+        public virtual ICollection<ProductVariants>? ProductVariants { get; set; }
     }
 }

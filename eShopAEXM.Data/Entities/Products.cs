@@ -8,7 +8,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShopAEXM.Data.Entities
+namespace eShopAEXM.backEndApi.Entities
 {
     [Table("Products")]
     public class Products
@@ -25,13 +25,12 @@ namespace eShopAEXM.Data.Entities
         public Guid CateID { get; set; }
         [Required(ErrorMessage = "vui lòng nhập trạng thái sản phẩm")]
         public Status Status { get; set; }
-        
-        public virtual ICollection<ProductVariants> ProductVariants { get; set; }
-        public virtual ICollection<ProductsIMG> ProductsIMGs { get; set; }
-        [ForeignKey("CateID")]
-        public virtual Category Category { get; set; }
-        [ForeignKey("BrandID")]
-        public virtual Brands Brands { get; set; }
 
+        public virtual ICollection<ProductVariants>? ProductVariants { get; set; }
+        public virtual ICollection<ProductsIMG>? ProductsIMGs { get; set; }
+        [ForeignKey("CateID")]
+        public virtual Category? Category { get; set; }
+        [ForeignKey("BrandID")]
+        public virtual Brands? Brands { get; set; }
     }
 }

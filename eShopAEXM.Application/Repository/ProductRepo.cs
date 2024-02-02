@@ -1,6 +1,6 @@
 ﻿using eShopAEXM.Application.IRepository;
+using eShopAEXM.backEndApi.Entities;
 using eShopAEXM.Data.Context;
-using eShopAEXM.Data.Entities;
 using eShopAEXM.Data.Models;
 using eShopAEXM.ModelView.Enum;
 using eShopAEXM.ModelView.ProductVM;
@@ -118,8 +118,8 @@ namespace eShopAEXM.Application.Repository
                 Description = x.Description,
                 Price = x.Price,
                 Status = x.Status,
-                UrlIMG = x.ProductsIMGs.First(x => x.Order == 1).URL
-            }); 
+                UrlIMG = x.ProductsIMGs.Count>0 ? x.ProductsIMGs.OrderBy(x => x.Order == 1).First().URL : "chưa có ảnh"
+            }); ; 
             return  lstProductDTO.ToList();
                 
 

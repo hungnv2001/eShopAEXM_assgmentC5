@@ -1,15 +1,10 @@
 ﻿using eShopAEXM.Application.IRepository;
-using eShopAEXM.backEndApi.Entities;
 using eShopAEXM.Data.Context;
-using eShopAEXM.Data.Models;
+using eShopAEXM.Data.Entities;
 using eShopAEXM.ModelView.Enum;
 using eShopAEXM.ModelView.ProductVM;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.FileProviders;
 
 namespace eShopAEXM.Application.Repository
 {
@@ -78,7 +73,7 @@ namespace eShopAEXM.Application.Repository
             var productDTO = new ProductDTO();
             if (product != null)
             {
-               productDTO = new ProductDTO()
+                productDTO = new ProductDTO()
                 {
                     Id = product.Id,
                     Name = product.Name,
@@ -98,8 +93,47 @@ namespace eShopAEXM.Application.Repository
                 var proCategory = await _eShopAEXMContext.Categories.FirstAsync(x => x.Id == product.CateID);
                 productDTO.CateName = proCategory.Name;
             }
-           
+
             return productDTO;
+        }
+
+
+        public async Task<ProductDetailsVM> DetailsVM(Guid? id)
+        {
+            //check
+            if (id == null)
+            {
+                // return cannot find product
+                return null;
+            }
+            //Find product id == id
+            var product = await _eShopAEXMContext.Products.Include(p => p.ProductVariants)
+                .ThenInclude(v => v.Size)
+                .Include(p => p.ProductVariants)
+                 .ThenInclude(v => v.Color)
+                   .Include(p => p.ProductsIMGs)
+                   .FirstOrDefaultAsync(g => g.Id == id);
+
+            //foreach (var variant in DataVariants)
+            //{
+            //    variant.Size = _eShopAEXMContext.Sizes.FirstOrDefault(m => m.ID == variant.Id);
+            //    variant.Color = _eShopAEXMContext.Colors.FirstOrDefault(m => m.ID == variant.Id);
+            //}
+            //product.ProductVariants = DataVariants;
+
+            //return productVM
+            var productVM = new ProductDetailsVM()
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description,
+                //Sizes = product.ProductVariants.Select(v => v.Size).ToList(),
+                //Colors = product.ProductVariants.Select(v => v.Color).ToList(),
+                Imgs = product.ProductsIMGs.Select(img => img.URL).ToList()
+            };
+
+            return productVM;
+
         }
 
         public async Task<ProductShopListPaging> GetProductsWithPagingnation(GetProductWithPagingRequest request)
@@ -111,6 +145,7 @@ namespace eShopAEXM.Application.Repository
 
             lstProduct = lstProduct.Skip((request.PageIndex - 1) * request.PageSize).Take(request.PageSize).ToList();
             
+
             var lstProductDTO = lstProduct.Select(x => new ProductDTO()
             {
                 Id = x.Id,
@@ -121,7 +156,6 @@ namespace eShopAEXM.Application.Repository
                 CateName = x.Category.Name,
                 Description = x.Description,
                 Price = x.Price,
-                Status = x.Status,
                 UrlIMG = x.ProductsIMGs.Count>0 ? x.ProductsIMGs.OrderBy(x => x.Order == 1).First().URL : "chưa có ảnh"
             }); ;
           
@@ -134,6 +168,9 @@ namespace eShopAEXM.Application.Repository
             };
                 
 
+
         }
+
+      
     }
 }

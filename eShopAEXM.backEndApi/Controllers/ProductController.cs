@@ -1,8 +1,6 @@
 ﻿using eShopAEXM.Application.IRepository;
 using eShopAEXM.ModelView.ProductVM;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
 
 namespace eShopAEXM.backEndApi.Controllers
 {
@@ -21,7 +19,18 @@ namespace eShopAEXM.backEndApi.Controllers
         {
             var products = await _productRepo.GetProductsWithPagingnation(request);
             return Ok(products);
-        } 
-        
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProductDetailsVM>> Detail(Guid? id)
+        {
+            var product = await _productRepo.DetailsVM(id);
+            if (product == null)
+            {
+                return NotFound(); // Trả về mã lỗi 404 nếu không tìm thấy sản phẩm
+            }
+            return Ok(product);
+        }
+
     }
 }

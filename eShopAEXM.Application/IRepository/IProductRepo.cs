@@ -1,9 +1,4 @@
 ﻿using eShopAEXM.ModelView.ProductVM;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eShopAEXM.Application.IRepository
 {
@@ -11,6 +6,11 @@ namespace eShopAEXM.Application.IRepository
     {
         Task<ProductDTO> CreateProduct(CreateProductRequest request);
         Task<ProductDTO> GetProductByID(Guid id);
+
 		Task<ProductShopListPaging> GetProductsWithPagingnation(GetProductWithPagingRequest request);
+
+
+        Task<ProductDetailsVM> DetailsVM(Guid? id);
+
     }
 }

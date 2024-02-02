@@ -1,4 +1,4 @@
-﻿using eShopAEXM.backEndApi.Entities;
+﻿using eShopAEXM.Data.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

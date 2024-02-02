@@ -11,6 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddSqlServer<eShopAEXMContext>("Data Source=.\\SQLEXPRESS;Initial Catalog=eShopAEXMDb;Integrated Security=True;Pooling=False;Encrypt=True;Trust Server Certificate=True");
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Add dependence Jection
 builder.Services.AddTransient<IProductRepo,ProductRepo>();
 var app = builder.Build();
 

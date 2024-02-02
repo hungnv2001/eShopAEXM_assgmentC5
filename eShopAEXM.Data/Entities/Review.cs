@@ -6,19 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShopAEXM.Data.Entities
+namespace eShopAEXM.backEndApi.Entities
 {
     [Table("Review")]   
     public class Review
     {
         [Key]   
         public Guid ID { get; set; }
-        public Guid InvoiceItemID { get; set; }
+        public Guid? InvoiceItemID { get; set; }
         [Required(ErrorMessage ="Vui lòng nhập giá")]
         public int Rate { get; set; } //De kieu du lieu int co hop ly khg ?
         [Required(ErrorMessage = "Vui lòng nhập bình luận")]
         public string? Comment { get; set; }
         [ForeignKey("InvoiceItemID")]
-        public virtual ICollection<InvoiceItems> InvoiceItems { get; set; }
+        public virtual ICollection<InvoiceItems>? InvoiceItems { get; set; }
     }
 }

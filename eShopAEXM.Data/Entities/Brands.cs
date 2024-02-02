@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShopAEXM.Data.Entities
+namespace eShopAEXM.backEndApi.Entities
 {
     [Table("Brands")]   
     public class Brands
@@ -15,6 +15,6 @@ namespace eShopAEXM.Data.Entities
         public Guid ID { get; set; }
         [Required(ErrorMessage ="Vui lòng nhập tên thương hiệu")]
         public string Name { get; set; }
-        public ICollection<Products> Products { get; set; }
+        public virtual ICollection<Products>? Products { get; set; }
     }
 }

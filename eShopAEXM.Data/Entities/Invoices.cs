@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShopAEXM.Data.Entities
+namespace eShopAEXM.backEndApi.Entities
 {
     [Table("Invoices")]   
     public class Invoices
@@ -19,11 +19,12 @@ namespace eShopAEXM.Data.Entities
         [Required(ErrorMessage = "Phải nhập giá giao hàng")]
         public double TransportPrice { get; set; } //Bo sung
         public double TotalPrice { get; set; }
-        public Guid CustomerID {  get; set; }
+        public Guid? CustomerID {  get; set; }
         [Required(ErrorMessage = "Phải nhập trạng thái giao hàng")]
         public InvoiceStatus Status { get; set; }
 
         [ForeignKey("CustomerID")]
-        public virtual AppUser User { get; set; }
+        public virtual AppUser? User { get; set; }
+        public virtual ICollection<InvoiceItems>? InvoiceItems { get; set; }
     }
 }

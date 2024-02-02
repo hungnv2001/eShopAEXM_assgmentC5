@@ -7,16 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShopAEXM.Data.Entities
+namespace eShopAEXM.backEndApi.Entities
 {
     [Table("ProductVariants")]   
     public class ProductVariants
     {
         [Key]   
         public Guid Id { get; set; }
-        public Guid ProductID { get; set; }
-        public Guid SizeID { get; set; }
-        public Guid ColorID { get; set; }
+        public Guid? ProductID { get; set; }
+        public Guid? SizeID { get; set; }
+        public Guid? ColorID { get; set; }
         [Required(ErrorMessage ="vui lòng nhập trạng thái")]
         public Status Status { get; set; }
         [Range(1,1000)]
@@ -24,10 +24,12 @@ namespace eShopAEXM.Data.Entities
         public int Quantity { get; set; }
 
         [ForeignKey("ProductID")]
-        public Products Products { get; set; }
+        public Products? Products { get; set; }
         [ForeignKey("SizeID")]
-        public Size Size { get; set; }
+        public Size? Size { get; set; }
         [ForeignKey("ColorID")]
-        public Color Color { get; set; }
+        public Color? Color { get; set; }
+        public virtual ICollection<CartItem>? CartItems { get; set; }
+        public virtual ICollection<InvoiceItems> InvoiceItems { get; set; }
     }
 }

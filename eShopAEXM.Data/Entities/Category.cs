@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShopAEXM.Data.Entities
+namespace eShopAEXM.backEndApi.Entities
 {
     [Table("Category")]   
     public class Category
@@ -16,6 +16,6 @@ namespace eShopAEXM.Data.Entities
         [Required(ErrorMessage ="vui lòng nhập loại hàng")]
         public string Name { get; set; }
 
-        public ICollection<Products> Products { get; set; }
+        public ICollection<Products>? Products { get; set; }
     }
 }

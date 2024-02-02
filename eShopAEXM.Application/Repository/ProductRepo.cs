@@ -1,6 +1,6 @@
 ﻿using eShopAEXM.Application.IRepository;
-using eShopAEXM.backEndApi.Entities;
 using eShopAEXM.Data.Context;
+using eShopAEXM.Data.Entities;
 using eShopAEXM.ModelView.Enum;
 using eShopAEXM.ModelView.ProductVM;
 using Microsoft.EntityFrameworkCore;

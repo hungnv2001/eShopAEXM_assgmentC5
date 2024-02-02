@@ -24,7 +24,7 @@ namespace eShopAEXM.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.AppRole", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.AppRole", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,7 +52,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.AppUser", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.AppUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -126,7 +126,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Brands", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Brands", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -141,7 +141,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("Brands");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.CartItem", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.CartItem", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -165,7 +165,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("CartItem");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Category", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Category", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -180,7 +180,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Color", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Color", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -195,7 +195,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("Color");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.InvoiceItems", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.InvoiceItems", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -222,7 +222,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("InvoiceItems");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Invoices", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Invoices", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -251,7 +251,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("Invoices");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Products", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Products", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -286,7 +286,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.ProductsIMG", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.ProductsIMG", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -310,7 +310,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("ProductsIMG");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.ProductVariants", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.ProductVariants", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -342,7 +342,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("ProductVariants");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Review", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Review", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -363,7 +363,7 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("Review");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Size", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Size", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -496,13 +496,13 @@ namespace eShopAEXM.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.CartItem", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.CartItem", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.AppUser", "AppUsers")
+                    b.HasOne("eShopAEXM.Data.Entities.AppUser", "AppUsers")
                         .WithMany("CartItems")
                         .HasForeignKey("CustomerID");
 
-                    b.HasOne("eShopAEXM.backEndApi.Entities.ProductVariants", "ProductVariants")
+                    b.HasOne("eShopAEXM.Data.Entities.ProductVariants", "ProductVariants")
                         .WithMany("CartItems")
                         .HasForeignKey("ProductVariantID");
 
@@ -511,13 +511,13 @@ namespace eShopAEXM.Data.Migrations
                     b.Navigation("ProductVariants");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.InvoiceItems", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.InvoiceItems", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.Invoices", "Invoices")
+                    b.HasOne("eShopAEXM.Data.Entities.Invoices", "Invoices")
                         .WithMany("InvoiceItems")
                         .HasForeignKey("InvoiceID");
 
-                    b.HasOne("eShopAEXM.backEndApi.Entities.ProductVariants", "Products")
+                    b.HasOne("eShopAEXM.Data.Entities.ProductVariants", "Products")
                         .WithMany("InvoiceItems")
                         .HasForeignKey("ProductID");
 
@@ -526,24 +526,24 @@ namespace eShopAEXM.Data.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Invoices", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Invoices", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.AppUser", "User")
+                    b.HasOne("eShopAEXM.Data.Entities.AppUser", "User")
                         .WithMany("Invoices")
                         .HasForeignKey("CustomerID");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Products", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Products", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.Brands", "Brands")
+                    b.HasOne("eShopAEXM.Data.Entities.Brands", "Brands")
                         .WithMany("Products")
                         .HasForeignKey("BrandID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eShopAEXM.backEndApi.Entities.Category", "Category")
+                    b.HasOne("eShopAEXM.Data.Entities.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CateID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -554,9 +554,9 @@ namespace eShopAEXM.Data.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.ProductsIMG", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.ProductsIMG", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.Products", "Products")
+                    b.HasOne("eShopAEXM.Data.Entities.Products", "Products")
                         .WithMany("ProductsIMGs")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -565,17 +565,17 @@ namespace eShopAEXM.Data.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.ProductVariants", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.ProductVariants", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.Color", "Color")
+                    b.HasOne("eShopAEXM.Data.Entities.Color", "Color")
                         .WithMany("ProductVariants")
                         .HasForeignKey("ColorID");
 
-                    b.HasOne("eShopAEXM.backEndApi.Entities.Products", "Products")
+                    b.HasOne("eShopAEXM.Data.Entities.Products", "Products")
                         .WithMany("ProductVariants")
                         .HasForeignKey("ProductID");
 
-                    b.HasOne("eShopAEXM.backEndApi.Entities.Size", "Size")
+                    b.HasOne("eShopAEXM.Data.Entities.Size", "Size")
                         .WithMany("ProductVariants")
                         .HasForeignKey("SizeID");
 
@@ -588,13 +588,13 @@ namespace eShopAEXM.Data.Migrations
 
             modelBuilder.Entity("InvoiceItemsReview", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.Review", null)
+                    b.HasOne("eShopAEXM.Data.Entities.Review", null)
                         .WithMany()
                         .HasForeignKey("InvoiceItemID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eShopAEXM.backEndApi.Entities.InvoiceItems", null)
+                    b.HasOne("eShopAEXM.Data.Entities.InvoiceItems", null)
                         .WithMany()
                         .HasForeignKey("InvoiceItemsID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -603,7 +603,7 @@ namespace eShopAEXM.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.AppRole", null)
+                    b.HasOne("eShopAEXM.Data.Entities.AppRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -612,7 +612,7 @@ namespace eShopAEXM.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.AppUser", null)
+                    b.HasOne("eShopAEXM.Data.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -621,7 +621,7 @@ namespace eShopAEXM.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.AppUser", null)
+                    b.HasOne("eShopAEXM.Data.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -630,13 +630,13 @@ namespace eShopAEXM.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.AppRole", null)
+                    b.HasOne("eShopAEXM.Data.Entities.AppRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eShopAEXM.backEndApi.Entities.AppUser", null)
+                    b.HasOne("eShopAEXM.Data.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -645,55 +645,55 @@ namespace eShopAEXM.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("eShopAEXM.backEndApi.Entities.AppUser", null)
+                    b.HasOne("eShopAEXM.Data.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.AppUser", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.AppUser", b =>
                 {
                     b.Navigation("CartItems");
 
                     b.Navigation("Invoices");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Brands", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Brands", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Category", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Category", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Color", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Color", b =>
                 {
                     b.Navigation("ProductVariants");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Invoices", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Invoices", b =>
                 {
                     b.Navigation("InvoiceItems");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Products", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Products", b =>
                 {
                     b.Navigation("ProductVariants");
 
                     b.Navigation("ProductsIMGs");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.ProductVariants", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.ProductVariants", b =>
                 {
                     b.Navigation("CartItems");
 
                     b.Navigation("InvoiceItems");
                 });
 
-            modelBuilder.Entity("eShopAEXM.backEndApi.Entities.Size", b =>
+            modelBuilder.Entity("eShopAEXM.Data.Entities.Size", b =>
                 {
                     b.Navigation("ProductVariants");
                 });

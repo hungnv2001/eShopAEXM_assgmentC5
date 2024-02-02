@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace eShopAEXM.backEndApi.Entities
+namespace eShopAEXM.Data.Entities
 {
     public class AppRole : IdentityRole<Guid>
     {

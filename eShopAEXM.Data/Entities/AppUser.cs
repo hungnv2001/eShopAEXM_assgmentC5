@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eShopAEXM.backEndApi.Entities
+namespace eShopAEXM.Data.Entities
 {
     [Table("AppUser")]
     public class AppUser : IdentityUser<Guid>

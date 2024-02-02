@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eShopAEXM.backEndApi.Entities
+namespace eShopAEXM.Data.Entities
 {
     [Table("ProductsIMG")]
     public class ProductsIMG

@@ -21,5 +21,16 @@ namespace eShopAEXM.backEndApi.Controllers
             return Ok(products);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProductDetailsVM>> Detail(Guid? id)
+        {
+            var product = await _productRepo.DetailsVM(id);
+            if (product == null)
+            {
+                return NotFound(); // Trả về mã lỗi 404 nếu không tìm thấy sản phẩm
+            }
+            return Ok(product);
+        }
+
     }
 }

@@ -17,5 +17,7 @@ namespace eShopAEXM.Data.Entities
         public string URL { get; set; }
         [Required(ErrorMessage = "vui lòng nhập Order")]
         public int Order { get; set; } //Thu tu sap xep
+        public Guid ProductID { get; set; }
+        public virtual Products? Products { get; set; }
     }
 }
